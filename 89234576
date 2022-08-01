@@ -82,7 +82,7 @@ end
 end)
   
   
-if style == 'Style1' then
+if style == 'Style1 Move' then
 spawn(function()
 while autofarm == true do
 wait()
@@ -178,7 +178,7 @@ end
 end
 end
 end)
-if style == 'Style2' then
+if style == 'Style2 Dont Move' then
 spawn(function()
 while getgenv().autofarm == true do
 local ohNumber1 = 3
