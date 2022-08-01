@@ -3,6 +3,8 @@ getgenv().autocollect = false
 getgenv().autocollectp = false
 getgenv().autofarm = false
 getgenv().auto = false
+getgenv().style = false
+getgenv().autofarm2 = false
 
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
@@ -54,14 +56,33 @@ end)
     Enabled = false
 })
 
+Page.Dropdown({
+    Text = "Choose Your Farm Style (needed)",
+    Callback = function(value)
+        getgenv().style = value
+    end,
+    Options = {"Style1 Move", "Style2 Dont Move"}
+})
+
 Page.Toggle({
     Text = "Auto Farm",
     Callback = function(value)
     tog = value
-  getgenv().autofarm = tog
+getgenv().autofarm = tog
+getgenv().autofarm2 = tog
   
   
+spawn(function()
+while getgenv().autofarm2 == true do
+local ohNumber1 = 5
+
+game:GetService("ReplicatedStorage").DepositHeads:FireServer(ohNumber1)
+wait()
+end    
+end)
   
+  
+if style == 'Style1' then
 spawn(function()
 while autofarm == true do
 wait()
@@ -115,15 +136,7 @@ wait(1)
 tween1:Play()
 end
 end)
-
-spawn(function()
-while getgenv().autofarm == true do
-local ohNumber1 = 3
-
-game:GetService("ReplicatedStorage").DepositHeads:FireServer(ohNumber1)
-wait()
-end    
-end)
+end
     end,
     Enabled = false
 })
@@ -165,6 +178,16 @@ end
 end
 end
 end)
+if style == 'Style2' then
+spawn(function()
+while getgenv().autofarm == true do
+local ohNumber1 = 3
+
+game:GetService("ReplicatedStorage").DepositHeads:FireServer(ohNumber1)
+wait()
+end    
+end)
+end
     end,
     Enabled = false
 })
