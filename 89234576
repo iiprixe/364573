@@ -181,7 +181,7 @@ end)
 if style == 'Style2 Dont Move' then
 spawn(function()
 while getgenv().autofarm == true do
-local ohNumber1 = 3
+local ohNumber1 = 5
 
 game:GetService("ReplicatedStorage").DepositHeads:FireServer(ohNumber1)
 wait()
